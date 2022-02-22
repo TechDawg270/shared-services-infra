@@ -1,0 +1,22 @@
+repositories:
+  - name: gitlab 
+    url: https://charts.gitlab.io 
+
+helmDefaults:
+  kubeContext: {{ requiredEnv "CONTEXT" }}
+
+releases:
+  - name: gitlab
+    namespace: gitlab
+    chart: gitlab/gitlab
+    version: 5.7.3 
+    values:
+      - values.yaml
+      - {{ requiredEnv "ENVIRONMENT" }}-{{ requiredEnv "REGION" }}.yaml
+    wait: true
+    timeout: 600
+    recreatePods: false
+    force: false
+    installed: true
+    atomic: true
+

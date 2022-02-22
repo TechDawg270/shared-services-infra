@@ -1,0 +1,9 @@
+global:
+  ## https://docs.gitlab.com/charts/installation/deployment#deploy-the-community-edition
+  edition: ce
+  hosts:
+    domain: gitlab.danes-demo-days.com
+  pages:
+    enabled: true
+    host: gitlab-pages.danes-demo-days.com
+    port: 80
