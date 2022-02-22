@@ -1,0 +1,19 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: shared-services-dev
+  region: us-west-2
+
+vpc:
+  subnets:
+    private:
+      us-west-2a : { id: subnet-02900c9c2403f7f52 }
+      us-west-2b: { id: subnet-07c3ebbb2264f35e5 }
+
+nodeGroups:
+  - name: shared-services-dev-ng-1-workers
+    labels: { role: workers }
+    instanceType: m5.large
+    desiredCapacity: 2
+    privateNetworking: true
